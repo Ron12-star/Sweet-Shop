@@ -23,6 +23,7 @@ async function addSweet(req, res) {
     await sweet.save();
 
     return res.status(201).json({
+      id: sweet._id,
       name,
       Category,
       price,
