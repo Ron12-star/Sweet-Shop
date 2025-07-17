@@ -5,8 +5,8 @@ const restockSweet = async (req, res) => {
     const sweetId = req.params.id;
     const { quantityToAdd } = req.body;
 
-    console.log(sweetId); // ✅ ID
-    console.log(quantityToAdd); // ✅ quantity
+    console.log(sweetId); 
+    console.log(quantityToAdd); 
 
     const sweet = await Sweet.findById(sweetId);
     if (!sweet) return res.status(404).json({ message: "Sweet not found" });
@@ -16,7 +16,7 @@ const restockSweet = async (req, res) => {
     const updatedSweet = await sweet.save();
 
     return res.status(200).json({
-      message: "Sweet restocked successfully", // ✅ this line was missing
+      message: "Sweet restocked successfully", 
       sweet: updatedSweet,
     });
   } catch (error) {
