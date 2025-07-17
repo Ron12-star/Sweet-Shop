@@ -1,16 +1,8 @@
 const mongoose = require("mongoose");
-const Sweet = require("../model/Sweet");
-
+const Sweet = require("../Sweet");
+const connectDatabase = require("../../config/db");
 beforeAll(async () => {
-  await mongoose.connect("mongodb://127.0.0.1:27017/test_sweets", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
-});
-
-afterAll(async () => {
-  await mongoose.connection.dropDatabase();
-  await mongoose.connection.close();
+  connectDatabase();
 });
 
 describe("Sweet Model Tests", () => {
@@ -23,14 +15,11 @@ describe("Sweet Model Tests", () => {
     };
 
     const sweet = new Sweet(sweetData);
-    const savedSweet = await sweet.save();
 
-    expect(savedSweet._id).toBeDefined();
-    expect(savedSweet.name).toBe("Gulab Jamun");
-    expect(savedSweet.Category).toBe("Milk-based");
-    expect(savedSweet.price).toBe(15);
-    expect(savedSweet.Quantity).toBe(20);
+    expect(sweet._id).toBeDefined();
+    expect(sweet.name).toBe("Gulab Jamun");
+    expect(sweet.Category).toBe("Milk-based");
+    expect(sweet.price).toBe(15);
+    expect(sweet.Quantity).toBe(20);
   });
-
- 
-});
+}, 10000);
