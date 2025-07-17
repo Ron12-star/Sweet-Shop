@@ -1,6 +1,7 @@
 require("dotenv").config({ debug: false });
 const express = require("express");
-const DatabaseConnection = require("./config/db");
+const DatabaseConnection = require("./config/db")
+
 const app =require("./app")
 app.use(express.json());
 app.get("/", (req, res) => {
@@ -13,7 +14,7 @@ const StartServer = async () => {
     console.log(`Server running at http://localhost:${PORT}`)
   );
 };
-DatabaseConnection();
+
 if (require.main === module) {
   StartServer();
 }
