@@ -3,7 +3,6 @@ const app = require("../../app");
 
 describe("Search Sweet Controller", () => {
   test("GET /sweet/search - should return sweets matching search query", async () => {
-    // Insert a sweet first
     const sweetToSearch = {
       name: "Gulab Jamun",
       Category: "Milk-based",
